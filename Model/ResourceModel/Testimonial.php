@@ -1,0 +1,12 @@
+<?php
+namespace KiwiCommerce\Testimonials\Model\ResourceModel;
+
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
+class Testimonial extends AbstractDb
+{
+    protected function _construct()
+    {
+        $this->_init('kiwicommerce_testimonials', 'testimonial_id');
+    }
+}

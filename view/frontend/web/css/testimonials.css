@@ -1,0 +1,46 @@
+.testimonials-slider {
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+.testimonial-slide {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.testimonial-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.testimonial-company {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.testimonial-post {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.testimonial-message {
+    font-size: 15px;
+    color: #333;
+    font-style: italic;
+}

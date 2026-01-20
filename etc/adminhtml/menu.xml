@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Menu/etc/menu.xsd">
+    <menu>
+        <add id="KiwiCommerce_Testimonials::main" title="KiwiCommerce" module="KiwiCommerce_Testimonials" sortOrder="60"  resource="KiwiCommerce_Testimonials::main"/>
+        <add id="KiwiCommerce_Testimonials::testimonial" title="Testimonials" module="KiwiCommerce_Testimonials" sortOrder="10" parent="KiwiCommerce_Testimonials::main" action="testimonials/testimonial/index" resource="KiwiCommerce_Testimonials::list"/>
+    </menu>
+</config>

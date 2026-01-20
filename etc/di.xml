@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="KiwiCommerce\Testimonials\Api\Data\TestimonialInterface" 
+                type="KiwiCommerce\Testimonials\Model\Testimonial" />
+                
+    <preference for="KiwiCommerce\Testimonials\Api\TestimonialRepositoryInterface" 
+                type="KiwiCommerce\Testimonials\Model\TestimonialRepository" />
+
+    <virtualType name="TestimonialGridDataProvider" 
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">
+                KiwiCommerce\Testimonials\Model\ResourceModel\Testimonial\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="testimonial_listing_data_source" xsi:type="string">
+                    KiwiCommerce\Testimonials\Model\ResourceModel\Testimonial\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="KiwiCommerce\Testimonials\Model\ResourceModel\Testimonial\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">kiwicommerce_testimonials</argument>
+            <argument name="eventPrefix" xsi:type="string">testimonial_collection</argument>
+            <argument name="eventObject" xsi:type="string">testimonial_collection</argument>
+            <argument name="resourceModel" xsi:type="string">
+                KiwiCommerce\Testimonials\Model\ResourceModel\Testimonial
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="KiwiCommerce\Testimonials\Api\Data\TestimonialInterface" xsi:type="string">
+                    KiwiCommerce\Testimonials\Api\TestimonialRepositoryInterface
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="import_testimonial" xsi:type="object">KiwiCommerce\Testimonials\Console\Command\ImportTestimonials</item>
+            </argument>
+        </arguments>
+    </type>
+
+
+</config>
+
+
+

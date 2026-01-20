@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="KiwiCommerce_Testimonials::main" title="KiwiCommerce" sortOrder="60">
+                    <resource id="KiwiCommerce_Testimonials::testimonial" title="Testimonials">
+                        <resource id="KiwiCommerce_Testimonials::list" title="View Testimonials"/>
+                        <resource id="KiwiCommerce_Testimonials::save" title="Save Testimonial"/>
+                        <resource id="KiwiCommerce_Testimonials::create" title="Create Testimonial"/>
+                        <resource id="KiwiCommerce_Testimonials::edit" title="Edit Testimonial"/>
+                        <resource id="KiwiCommerce_Testimonials::delete" title="Delete Testimonial"/>
+                        <resource id="KiwiCommerce_Testimonials::massaction" title="Mass Actions"/>
+                        <resource id="KiwiCommerce_Testimonials::inlineEdit" title="Inline Edit"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

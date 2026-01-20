@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <!-- Get testimonial by ID -->
+    <route url="/V1/testimonials/:testimonialId" method="GET">
+        <service class="KiwiCommerce\Testimonials\Api\TestimonialRepositoryInterface"
+                 method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- List testimonials with SearchCriteria -->
+    <route url="/V1/testimonials" method="GET">
+        <service class="KiwiCommerce\Testimonials\Api\TestimonialRepositoryInterface"
+                 method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- Create / Update -->
+    <route url="/V1/testimonials" method="POST">
+        <service class="KiwiCommerce\Testimonials\Api\TestimonialRepositoryInterface"
+                 method="save"/>
+        <resources>
+            <resource ref="Magento_Backend::admin"/>
+        </resources>
+    </route>
+
+    <!-- Delete -->
+    <route url="/V1/testimonials/:testimonialId" method="DELETE">
+        <service class="KiwiCommerce\Testimonials\Api\TestimonialRepositoryInterface"
+                 method="deleteById"/>
+        <resources>
+            <resource ref="Magento_Backend::admin"/>
+        </resources>
+    </route>
+
+</routes>

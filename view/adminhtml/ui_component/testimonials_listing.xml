@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<listing name="testimonials_listing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">testimonials_listing.testimonial_listing_data_source</item>
+            <item name="deps" xsi:type="string">testimonials_listing.testimonial_listing_data_source</item>
+        </item>
+
+        <item name="spinner" xsi:type="string">testimonials_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Create Testimonial</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/new</item>
+            </item>
+
+        </item>
+    </argument>
+
+    <dataSource name="testimonial_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">testimonial_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">testimonial_id</argument>
+            <argument name="requestFieldName" xsi:type="string">testimonial_id</argument>
+            <argument name="collection" xsi:type="object">KiwiCommerce\Testimonials\Model\ResourceModel\Testimonial\Grid\Collection</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">testimonial_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <settings />
+        <columnsControls name="columns_controls" />
+		<filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+        </filters>
+        <exportButton class="Magento\Ui\Component\ExportButton" />
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="testimonials/testimonial/massDelete" />
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="status">
+                <settings>
+                    <url path="testimonials/testimonial/massStatus" />
+                    <type>status</type>
+                    <label translate="true">Change Status</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging" />
+    </listingToolbar>
+
+    <columns name="testimonials_columns">
+        <settings>
+           <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="testimonials/testimonial/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">true</item>
+                </param>
+                <param name="indexField" xsi:type="string">testimonial_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="selectProvider" xsi:type="string">testimonials_listing.testimonials_listing.testimonials_columns.ids</param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">testimonials_listing.testimonials_listing.testimonials_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>testimonial_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="testimonial_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="company_name">
+            <settings>
+                <filter>fulltext</filter>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Company Name</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>fulltext</filter>
+                <label translate="true">Name</label>
+                  <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="message">
+            <settings>
+                <filter>fulltext</filter>
+                <label translate="true">Message</label>
+                <editor>
+                    <editorType>textarea</editorType>
+                </editor>
+            </settings>
+        </column>
+        <column name="post">
+            <settings>
+                <filter>fulltext</filter>
+                <label translate="true">Post</label>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+            </settings>
+        </column>
+        <column name="profile_pic">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Profile Pic</label>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+                <options class="KiwiCommerce\Testimonials\Model\Source\Status"/>
+
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+            </settings>
+        </column>
+        <column name="created_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Updated At</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="KiwiCommerce\Testimonials\Ui\Component\Listing\Column\TestimonialAction">
+            <settings>
+                <indexField>testimonial_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+
+</listing>

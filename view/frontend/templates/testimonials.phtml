@@ -1,0 +1,35 @@
+<div class="testimonials-slider">
+    <?php $testimonials = $block->getTestimonials(); ?>
+    <?php foreach ($testimonials as $testimonial): ?>
+        <div class="testimonial-slide">
+            <?php if ($testimonial->getProfilePic()): ?>
+                <img src="<?php echo $block->getImageUrl($testimonial->getProfilePic()); ?>" 
+                     alt="<?php echo $testimonial->getName(); ?>" 
+                     class="testimonial-img"/>
+            <?php endif; ?>
+            <h3 class="testimonial-name"><?php echo $testimonial->getName(); ?></h3>
+            <p class="testimonial-company"><?php echo $testimonial->getCompanyName(); ?></p>
+            <p class="testimonial-post"><?php echo $testimonial->getPost(); ?></p>
+            <p class="testimonial-message"><?php echo $testimonial->getMessage(); ?></p>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+<!-- Initialize Slick directly -->
+<script type="text/javascript">
+    require(['jquery', 'slick'], function($) {
+        $(document).ready(function() {
+            $('.testimonials-slider').slick({
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                arrows: true,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                dots: true,
+                responsive: [
+                    { breakpoint: 768, settings: { slidesToShow: 1 } }
+                ]
+            });
+        });
+    });
+</script>

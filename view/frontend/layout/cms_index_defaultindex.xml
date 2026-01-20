@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- Custom CSS for testimonials -->
+        <css src="KiwiCommerce_Testimonials::css/testimonials.css"/>
+    </head>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="KiwiCommerce\Testimonials\Block\Testimonials"
+                   name="home.testimonials"
+                   template="KiwiCommerce_Testimonials::testimonials.phtml"
+                   before="-"/>
+        </referenceContainer>
+    </body>
+</page>

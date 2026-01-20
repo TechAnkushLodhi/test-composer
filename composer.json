@@ -1,0 +1,24 @@
+{
+  "name": "kiwicommerce/magento2-testimonials",
+  "description": "Magento 2 Testimonials Module with REST API and CSV Import",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Ankush Lodhi",
+      "email": "ankushsinghlodhi@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "KiwiCommerce\\Testimonials\\": ""
+    }
+  }
+}
